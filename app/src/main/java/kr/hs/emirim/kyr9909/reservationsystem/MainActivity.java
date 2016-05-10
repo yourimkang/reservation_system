@@ -29,12 +29,32 @@ public class MainActivity extends ActionBarActivity {
         chrono=(Chronometer)findViewById(R.id.chrono);
         butStart=(Button)findViewById(R.id.but_start);
         butDone=(Button)findViewById(R.id.but_done);
-        radioDate=(RadioButton)findViewById(R.id.radio_date);
-        radioTime=(RadioButton)findViewById(R.id.radio_time);
+        radioDate=(RadioButton)findViewById(R.id.radio_date); //참조변수
+        radioTime=(RadioButton)findViewById(R.id.radio_time); //참조변수
         calView=(CalendarView)findViewById(R.id.calendar);
         timePick=(TimePicker)findViewById(R.id.time_pick);
         textResult=(TextView)findViewById(R.id.text_result);
         timePick.setVisibility(View.INVISIBLE);
         calView.setVisibility(View.INVISIBLE);
+
+        //익명 클래스 (이름없이 클래스를 구현 + 객체 생성) (event handler)
+        //Event Source * 날짜 설정 / * 시간 설정
+        //EventListener (감시자)
+        radioDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                calView.setVisibility(View.VISIBLE);
+                timePick.setVisibility(View.INVISIBLE);
+            }
+        });
+
+        radioTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                calView.setVisibility(View.INVISIBLE);
+                timePick.setVisibility(View.VISIBLE);
+            }
+        });
     }
+
 }
